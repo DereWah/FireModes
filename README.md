@@ -1,4 +1,4 @@
-# FireModes ![Downloads](https://img.shields.io/github/downloads/DereWah/FireModes/total)
+# FireModes 
 Single, Burst and Auto FireModes for SCP:SL weapons! 
 
 ## Config
