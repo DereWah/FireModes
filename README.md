@@ -1,6 +1,9 @@
 # FireModes ![Downloads](https://img.shields.io/github/downloads/DereWah/FireModes/total)
 Single, Burst and Auto FireModes for SCP:SL weapons! 
 
+Simply press the button "ALT" to switch between fire modes.
+(If it doesn't work, use the button you mapped to No-Clip-Toggle in the settings)
+
 ## Config
 
 The configuration is really simple. Simply add in the list the weapons you'd like FireModes to work with and you're set!
