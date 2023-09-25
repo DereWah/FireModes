@@ -62,6 +62,8 @@ namespace FireModes
             Player.Shooting -= PlayerHandler.Shooting;
             Player.UnloadingWeapon -= PlayerHandler.UnloadingWeapon;
             Player.TogglingNoClip -= PlayerHandler.TogglingNoClip;
+            Server.RoundStarted -= ServerHandler.RoundStarted;
+
 
             ServerHandler = null;
             PlayerHandler = null;

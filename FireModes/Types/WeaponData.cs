@@ -11,5 +11,6 @@ namespace FireModes.Types
     {
         public byte CurrentAmmo;
         public FiringModes FireMode;
+        public float DefaultFireRate;
     }
 }
