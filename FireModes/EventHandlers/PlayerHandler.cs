@@ -182,11 +182,21 @@ namespace FireModes.EventHandlers
                 RegisterWeapon((Firearm) e.Player.CurrentItem);
                 WeaponData wd = Main.Singleton.WeaponMemory[e.Player.CurrentItem.Serial];
                 wd.FireMode = GetNextFireMode(e.Player.CurrentItem.Type, (int) wd.FireMode);
-                //Log.Info(wd.FireMode);
-                e.Player.ShowHint($"<align=left>Firing Mode: {wd.FireMode}</align>\n<align=right>Ammo: {wd.CurrentAmmo} / {((Firearm) e.Player.CurrentItem).MaxAmmo}</align>");
+                if (Main.Singleton.Config.ShowMessageOnFiremodeChange)
+                {
+                    string Hint = BuildHint(wd.FireMode, wd.CurrentAmmo, ((Firearm)e.Player.CurrentItem).MaxAmmo);
+                    e.Player.ShowHint(Hint);
+                }
                 UpdateWeapon((Firearm)e.Player.CurrentItem);
                 
             }
+        }
+
+        public string BuildHint(Enums.FiringModes FiringMode, byte CurrentAmmo, byte MaxAmmo)
+        {
+            string UnformattedString = Main.Singleton.Config.FiremodeChangeMessage;
+            if (!Main.Singleton.Config.FiremodeTranslation.TryGetValue(FiringMode, out string FiringmodeTranslation)) FiringmodeTranslation = $"{FiringMode}";
+            return UnformattedString.Replace("{ammo}", $"{CurrentAmmo}").Replace("{maxammo}", $"{MaxAmmo}").Replace("{firemode}", $"{FiringmodeTranslation}");           
         }
     }
 }
