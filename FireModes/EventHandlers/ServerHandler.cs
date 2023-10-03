@@ -9,7 +9,7 @@ namespace FireModes.EventHandlers
     class ServerHandler
     {
 
-        public void RoundStarted()
+        public void WaitingForPlayers()
         {
             Main.Singleton.WeaponMemory.Clear();
         }

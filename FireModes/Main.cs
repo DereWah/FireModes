@@ -3,6 +3,7 @@ using Exiled.API.Features;
 using Exiled.API.Features.Core.Generic;
 using Exiled.Events;
 using FireModes.Types;
+using FireModes.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace FireModes
 
         public Dictionary<ushort, WeaponData> WeaponMemory = new Dictionary<ushort, WeaponData>();
 
+        public Utilities Utilities = new Utilities();
 
         public override void OnEnabled()
         {
@@ -53,7 +55,7 @@ namespace FireModes
             Player.Shooting += PlayerHandler.Shooting;
             Player.UnloadingWeapon += PlayerHandler.UnloadingWeapon;
             Player.TogglingNoClip += PlayerHandler.TogglingNoClip;
-            Server.RoundStarted += ServerHandler.RoundStarted;
+            Server.WaitingForPlayers += ServerHandler.WaitingForPlayers;
         }
 
         public void UnregisterEvents()
@@ -62,7 +64,7 @@ namespace FireModes
             Player.Shooting -= PlayerHandler.Shooting;
             Player.UnloadingWeapon -= PlayerHandler.UnloadingWeapon;
             Player.TogglingNoClip -= PlayerHandler.TogglingNoClip;
-            Server.RoundStarted -= ServerHandler.RoundStarted;
+            Server.WaitingForPlayers -= ServerHandler.WaitingForPlayers;
 
 
             ServerHandler = null;

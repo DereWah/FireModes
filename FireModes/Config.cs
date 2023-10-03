@@ -1,11 +1,11 @@
 ﻿using Exiled.API.Interfaces;
+using FireModes.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static FireModes.Types.Enums;
 
 namespace FireModes
 {

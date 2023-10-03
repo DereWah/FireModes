@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace FireModes.Types
 {
-    public class Enums
+    public enum FiringModes
     {
-        public enum FiringModes
-        {
-            Single = 0,
-            Burst = 1,
-            Auto = 2
-        }
+        Single = 0,
+        Burst = 1,
+        Auto = 2
     }
+
 }
