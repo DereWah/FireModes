@@ -1,6 +1,7 @@
 ﻿using Exiled.API.Features;
 using Exiled.API.Features.Items;
 using FireModes.Types;
+using MEC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -108,6 +109,19 @@ namespace FireModes.Utils
                 firearm.Ammo == firearm.MaxAmmo ||
                 wd.CurrentAmmo == firearm.MaxAmmo) return false;
             return true;
+        }
+
+        public IEnumerator<float> FinishReloading(Player p, Firearm firearm, WeaponData wd)
+        {
+            Main Plugin = Main.Singleton;
+
+            yield return Timing.WaitUntilFalse(() => p.IsReloading);
+
+            //after reloading is done we update the virtual mag ammo with the new amount
+            wd.CurrentAmmo = firearm.Ammo;
+
+            //then we update the weapon to match its fire mode
+            UpdateWeapon(firearm);
         }
     }
 }

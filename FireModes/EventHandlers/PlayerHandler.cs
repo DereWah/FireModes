@@ -13,20 +13,6 @@ namespace FireModes.EventHandlers
 {
     public class PlayerHandler
     {
-
-        public IEnumerator<float> FinishReloading(Player p, Firearm firearm, WeaponData wd)
-        {
-            Main Plugin = Main.Singleton;
-
-            yield return Timing.WaitUntilFalse(() => p.IsReloading);
-
-            //after reloading is done we update the virtual mag ammo with the new amount
-            wd.CurrentAmmo = firearm.Ammo;
-
-            //then we update the weapon to match its fire mode
-            Plugin.Utilities.UpdateWeapon(firearm);
-        }
-
         public void ReloadingWeapon(ReloadingWeaponEventArgs e)
         {
 
@@ -49,7 +35,7 @@ namespace FireModes.EventHandlers
                 Timing.CallDelayed(2f, () =>
                 {
 
-                    Timing.RunCoroutine(FinishReloading(e.Player, e.Firearm, wd));
+                    Timing.RunCoroutine(Plugin.Utilities.FinishReloading(e.Player, e.Firearm, wd));
                 });
             } 
         }
