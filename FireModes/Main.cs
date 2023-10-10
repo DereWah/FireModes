@@ -27,16 +27,17 @@ namespace FireModes
 
         private EventHandlers.ServerHandler ServerHandler;
 
-        public static Main Singleton;
+        public static Main Instance;
 
         public Dictionary<ushort, WeaponData> WeaponMemory = new Dictionary<ushort, WeaponData>();
 
-        public Utilities Utilities = new Utilities();
+        public Utilities Utilities;
 
         public override void OnEnabled()
         {
             base.OnEnabled();
-            Singleton = this;
+            Instance = this;
+            Utilities = new Utilities(this);
             RegisterEvents();
         }
 
@@ -48,8 +49,8 @@ namespace FireModes
 
         public void RegisterEvents()
         {
-            ServerHandler = new EventHandlers.ServerHandler();
-            PlayerHandler = new EventHandlers.PlayerHandler();
+            ServerHandler = new EventHandlers.ServerHandler(this);
+            PlayerHandler = new EventHandlers.PlayerHandler(this);
 
             Player.ReloadingWeapon += PlayerHandler.ReloadingWeapon;
             Player.Shooting += PlayerHandler.Shooting;

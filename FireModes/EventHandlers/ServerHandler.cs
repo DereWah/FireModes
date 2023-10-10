@@ -8,10 +8,14 @@ namespace FireModes.EventHandlers
 {
     class ServerHandler
     {
+        private readonly Main plugin;
+
+        public ServerHandler(Main plugin) => this.plugin = plugin;
+
 
         public void WaitingForPlayers()
         {
-            Main.Singleton.WeaponMemory.Clear();
+            plugin.WeaponMemory.Clear();
         }
     }
 }
